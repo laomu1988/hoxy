@@ -11,6 +11,12 @@
   Here's a quick sample program that tampers with request headers.
 </p>
 
+
+<p>
+  Hoxy需要Node 0.12.x以上版本，io.js 1.0以上版本。
+  下面是一个篡改请求的小例子
+</p>
+
 <pre class="language-javascript code">
   let hoxy = require('hoxy');
   let proxy = hoxy.createServer().listen(8080);
@@ -25,7 +31,13 @@
   As long as you know JavaScript and HTTP, you can inspect and manipulate your own web traffic in arbitrary ways.
 </p>
 
+<p>
+  执行代码，配置代理地址为<code>yourmachine:8080</code>，服务器端收到的请求header中就包含了x-unicorns。
+  只要懂得Javascript和Http，你就可以随意的查看和修改网络数据。
+</p>
+
 <h2 id="installation" data-tldr="Available on npm.">Download &amp; Installation</h2>
+<h2 id="installation" data-tldr="Available on npm.">下载 &amp; 安装</h2>
 
 <p>
   Hoxy is available on both <a href="https://www.npmjs.org/package/hoxy">npm</a> and <a href="https://github.com/greim/hoxy">github</a>.
