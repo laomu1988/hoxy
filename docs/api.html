@@ -3,9 +3,9 @@
 <head></head>
 <body>
 
-<h1 id="api-documentaiton" data-tldr="Objects, methods, and properties.">API documentaiton</h1>
+<h1 id="api-documentaiton" data-tldr="Objects, methods, and properties.">API文档</h1>
 
-<h2 id="main-module" data-tldr="Entry point for all hoxy functionality.">Main module</h2>
+<h2 id="main-module" data-tldr="Entry point for all hoxy functionality.">主要模块</h2>
 
 <pre class="language-javascript code">
   var hoxy = require('hoxy');
@@ -18,16 +18,14 @@
 <h2 id="class-proxy">Class Proxy</h2>
 
 <p>
-  Represents a proxy server.
-  An instance of this is returned from <code>hoxy.createServer()</code>.
+  <code>hoxy.createServer()</code>将生成一个代理服务器
 </p>
 
 <div class="api-detail">
   <h3 id="new-proxy"><a href="#new-proxy">hoxy.createServer(<span class="args">options</span>)</a></h3>
   <div class="api-detail-content">
     <p>
-      Factory for a new proxy with given options.
-      All options are optional.
+      通过参数生成代理，所有参数都是可选的.
     </p>
     <pre class="language-javascript code">
       var hoxy = require('hoxy');
@@ -40,27 +38,25 @@
       });
     </pre>
     <table>
-      <caption>Options Detail</caption>
+      <caption>参数详解</caption>
       <thead>
         <tr>
-          <th>name</th>
-          <th>description</th>
+          <th>参数</th>
+          <th>详解</th>
         </tr>
       </thead>
       <tobdy>
         <tr>
           <td><code>upstreamProxy</code></td>
           <td>
-            Optional.
-            If present, this proxy will in turn use another proxy.
-            This allows Hoxy to play well with other proxies.
-            This value should take the form <code>host:port</code>.
+            [可选]。将当前代理将转发到其他代理地址。使用格式：<code>host:port</code>
           </td>
         </tr>
         <tr>
           <td><code>reverse</code></td>
           <td>
-            Optional.
+            [可选].
+            本代理将作为指定服务器的反向代理。
             If present, this proxy will run as a reverse proxy for the given server.
             This allows you to point your client directly at the proxy, instead of configuring it in the client's proxy settings.
             This value should take the form <code>scheme://host:port</code>.
@@ -69,9 +65,9 @@
         <tr>
           <td><code>certAuthority&nbsp;{&nbsp;key,&nbsp;cert&nbsp;}</code></td>
           <td>
-            Optional.
-            If present, this should contain a key/cert combo representing a certificate authority that your client trusts.
-            See <a href="https://github.com/coolaj86/node-ssl-root-cas/wiki/Painless-Self-Signed-Certificates-in-node.js">these instructions</a> for how to generate these files.
+            [可选].
+            通过设置(密匙/证书)在你的客户端生成一个ssl证书.在这里<a href="https://github.com/coolaj86/node-ssl-root-cas/wiki/Painless-Self-Signed-Certificates-in-node.js">查看如何生成密匙和证书</a> .
+            你需要设置客户端使用这个https代理。设置完成后，只要你访问网站，通过在内存中生成一个假密匙和证书，hoxy将能够像监听http一样监听https请求。
             You'll then need to configure your client to use this proxy for https in addition to http.
             Once you've got all of that set up, Hoxy will generate fake keys/cert combos for every hostname you visit, caching them in memory for subsequent visits, thus allowing the proxy to handle https requests as cleartext.
           </td>
@@ -80,9 +76,8 @@
           <td><code>tls&nbsp;{&nbsp;key,&nbsp;cert&nbsp;}</code></td>
           <td>
             Optional.
-            Should only be used in comination with <code>reverse</code>.
-            If present, causes Hoxy to run as an https server.
-            Passed as <code>opts</code> to <code>https.createServer(opts, function)</code> (see the <a href="https://iojs.org/api/https.html">https module docs</a>).
+            只能组合后用于反向代理，使用后Hoxy将作为一个https服务器。
+            Passed as <code>opts</code> to <code>https.createServer(opts, function)</code> (参见 <a href="https://iojs.org/api/https.html">https文档</a>).
           </td>
         </tr>
         <tr>
@@ -90,15 +85,14 @@
           <td>
             Optional.
             <ul>
-              <li><code>latency</code> imposes a delay (in milliseconds) between all requests and responses.</li>
-              <li><code>rate</code> imposes a single rate-limiting bottleneck (in bytes per second) on all throughput.</li>
-              <li><code>up</code> imposes a single rate-limiting bottleneck (in bytes per second) on all uploads.</li>
-              <li><code>down</code> imposes a single rate-limiting bottleneck (in bytes per second) on all downloads.</li>
+              <li><code>latency</code> 在所有请求和响应之间增加一个延迟。单位（ms）.</li>
+              <li><code>rate</code> 限制网速，单位(bytes per second).</li>
+              <li><code>up</code> 限制上传速度(bytes per second).</li>
+              <li><code>down</code> 限制下载速度(bytes per second).</li>
             </ul>
-            Note: <code>up</code> and <code>down</code> are independent.
-            However, <code>rate</code> and <code>up</code> (if they both exist) form a pipeline; the slower of the two governing the total speed.
-            The same is true of <code>rate</code> and <code>down</code>.
-            These properties can also be get/set by using <code>proxy.slow()</code>.
+            注意: <code>上传</code> 和 <code>下载</code> 是独立的.
+            然而，假如同时使用<code>rate</code>和<code>up</code>，他们当中较慢的将生效。<code>rate</code> 和 <code>down</code> 也是一样。
+            这些属性可以通过<code>proxy.slow()</code>获取或者设置。
           </td>
         </tr>
       </tobdy>
@@ -110,15 +104,14 @@
   <h3 id="proxy-listen"><a href="#proxy-listen">proxy.listen(<span class="args">port, [hostname], [backlog], [callback]</span>)</a></h3>
   <div class="api-detail-content">
     <p>
-      Starts proxy listening on <code>port</code>.
-      Returns itself.
+      监听<code>port</code>端口并返回自身（proxy实例）
     </p>
     <pre class="language-javascript code">
       var hoxy = require('hoxy');
       var proxy = hoxy.createServer().listen(8080);
     </pre>
     <p>
-      A callback may be provided, to run when the proxy has started listening.
+      可以添加回调函数，当代理启动时调用。
     </p>
     <pre class="language-javascript code">
       var hoxy = require('hoxy');
@@ -128,7 +121,7 @@
       });
     </pre>
     <p>
-      This method simply passes its arguments to Node&apos;s <a href="http://nodejs.org/api/http.html#http_server_listen_port_hostname_backlog_callback"><code>server.listen()</code> method</a>.
+      这个函数只是将所有参数都传递给Node的<a href="http://nodejs.org/api/http.html#http_server_listen_port_hostname_backlog_callback"><code>server.listen()</code> 方法</a>。
     </p>
   </div>
 </div>
@@ -137,14 +130,14 @@
   <h3 id="proxy-slow"><a href="#proxy-slow">proxy.slow(<span class="args">[options]</span>)</a></h3>
   <div class="api-detail-content">
     <p>
-      Get/set proxy-level slow options.
-      If <code>options</code> is provided, it's a setter.
+      获取或者设置代理网络速度的选项。
+      如果有参数, 就是设置速度
     </p>
     <pre class="language-javascript code">
       proxy.slow({ rate, latency, up, down });
     </pre>
     <p>
-      If <code>options</code> is not provided, it's a getter.
+      如果没有参数，就会返回当前速度设置。
     </p>
     <pre class="language-javascript code">
       var slowOpts = proxy.slow();
@@ -156,14 +149,14 @@
   <h3 id="proxy-intercept"><a href="#proxy-intercept">proxy.intercept(<span class="args">options, handler</span>)</a></h3>
   <div class="api-detail-content">
     <p>
-      This is the entry point for intercepting and operating on requests and responses.
-      This first example intercepts all requests.
+      这是拦截和操作请求或响应数据的入口。
+      下面这个例子将拦截所有的请求。
     </p>
     <pre class="language-javascript code">
       proxy.intercept('request', req => console.log(req.url));
     </pre>
     <p>
-      This is more verbose, but identical to the above.
+      这个例子更详细，但功能和上面的相同。
     </p>
     <pre class="language-javascript code">
       proxy.intercept({
@@ -172,9 +165,9 @@
         console.log(req.url);
       });
     </pre>
-    <h4>Interceptors</h4>
+    <h4>Interceptors(拦截)</h4>
     <p>
-      The callback passed to <code>intercept()</code> (AKA the <em>interceptor</em>) receives three arguments <code>(req, resp, cycle)</code> which are instances of classes described below.
+      传递给 <code>intercept()</code> (同名<em>interceptor</em>)的回调函数接收三个参数<code>(req, resp, cycle)</code>，他们是下面介绍的一些类的实例。
       <code>cycle</code> is also passed as context.
       Thus:
     </p>
@@ -183,8 +176,10 @@
         console.log(this === cycle) // true
       });
     </pre>
-    <h4>Sync versus async interceptors</h4>
+    <h4>Sync versus async interceptors 同步拦截器vs异步拦截器</h4>
     <p>
+      Hoxy会按顺序执行所有内容，包括拦截器。
+      当执行同步代码时没有问题，但是当执行异步代码时，你必须返回一个Promise。Hoxy会等待Promise resolve完毕后后面的代码才会继续。
       Hoxy internally runs everything sequentially in series, including interceptors.
       That happens naturally when your interceptor logic is synchronous.
       But if it's asynchronous, you must signal that by returning a promise.
@@ -201,10 +196,8 @@
       });
     </pre>
     <p>
-      Future versions of JavaScript will allow <a href="https://github.com/lukehoban/ecmascript-asyncawait">async functions</a>.
-      Some transpilers allow you to use this syntax today.
-      These can be used as interceptors, too.
-      Written this way, your logic and your error handling are much cleaner.
+      Javascript的未来版本将可以使用功能async。
+      通过一些转换器现在就可以使用它。这些特性也可以在拦截器中使用。通过新的写法，逻辑操作和错误处理也更新清晰了。
     </p>
     <pre class="language-javascript code">
       proxy.intercept('request', async function(req, resp, cycle) {
@@ -215,6 +208,7 @@
       });
     </pre>
     <p>
+      在当前版本的io.js，
       In current versions of io.js, generators can be used as a stand-in for async functions, but with the benefit of being natively-supported, spec-valid ES6 syntax.
       You must only yield <em>promises</em> from your generator.
       See <a href="https://www.npmjs.com/package/co">co</a> for more details.

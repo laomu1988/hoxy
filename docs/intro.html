@@ -11,18 +11,28 @@
   A few key features:
 </p>
 
+<p>
+  Hoxy是一个用Node编写的完全免费、开源的Http代理软件，类似Charles和Fiddler。
+  它有如下特点：
+</p>
+
 <ul>
-  <li>Intercept requests and/or responses.</li>
-  <li>Observe and alter all aspects of requests/responses.</li>
-  <li>Simulate network slowness and latency.</li>
-  <li>Supports both direct and reverse proxying.</li>
-  <li>Built-in helpers for replacing remote files with local ones.</li>
-  <li>Request/response body types: JSON, string, jQuery, buffer, etc.</li>
-  <li>Supports both HTTP and HTTPS.</li>
+  <li>中断请求或者响应.</li>
+  <li>观察和改变请求或响应的各个部分</li>
+  <li>模拟网络的缓慢和延迟</li>
+  <li>支持直接或者反向代理</li>
+  <li>可以用本地文件代替远程请求</li>
+  <li>请求或者响应主体类型: JSON, string, jQuery, buffer, etc.</li>
+  <li>支持HTTP和HTTPS.</li>
 </ul>
 
 <p>
   Here are a few ideas for things you could do.
+</p>
+
+<p>
+  Here are a few ideas for things you could do.
+  下面是一些想法你可能用到
 </p>
 
 <ul>
@@ -33,17 +43,33 @@
   <li>Test changes in production, without pushing to production.</li>
 </ul>
 
+<ul>
+  <li>把你朋友圈的图片替换成独角兽.</li>
+  <li>添加一些headers标志迷惑服务器</li>
+  <li>从浏览器中删除广告.</li>
+  <li>通过添加一些随机量测试网站的加载顺便</li>
+  <li>在推送到正式环境之前测试产品的变化</li>
+</ul>
 <p>
   These docs are for Hoxy 3.x.
   See the <a href="#examples">incantations</a> section for code samples.
 </p>
+<p>
+  下面是Hoxy 3.x的文档。
+  查看示例请点击： <a href="#examples">咒语</a> 。
+</p>
 
-<h2 id="how-it-works">How it works</h2>
+<h2 id="how-it-works">工作原理</h2>
 
 <p>
   Hoxy functions as a normal proxy standing between the client and server.
   You intercept traffic during either the request or response phase, or both.
   The <a href="#phase-lifecycle">phase lifecycle section</a> contains a more complete description, but here's a simplified illustration.
+</p>
+<p>
+  Hoxy是一个客户端和服务器之间的代理工具。
+  你可以拦截请求或者响应，
+  下面是一张简图，详细情况<a href="#phase-lifecycle">点击查看</a>
 </p>
 
 <pre class="code">
@@ -57,12 +83,11 @@
 </pre>
 
 <ol>
-  <li>Client sends request.</li>
-  <li>Hoxy intercepts the request.</li>
-  <li>Server receives request and sends response.</li>
-  <li>Hoxy intercepts the response.</li>
-  <li>Client receives response.</li>
+  <li>客户端发送请求.</li>
+  <li>Hoxy拦截并处理请求.</li>
+  <li>服务器端收到请求并发送响应数据.</li>
+  <li>Hoxy拦截响应并处理.</li>
+  <li>客户端收到请求.</li>
 </ol>
-
 </body>
 </html>

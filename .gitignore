@@ -3,5 +3,3 @@ node_modules/
 npm-debug.log
 poc.js
 /lib/
-/experiments/
-/index.html

@@ -1,6 +1,7 @@
 # Hoxy
 
 An HTTP hacking tool for JavaScript programmers.
+Javascript的http监听和代理工具，支持https。
 
 ## Full Documentation
 
