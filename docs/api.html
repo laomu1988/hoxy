@@ -91,11 +91,8 @@
               <li><code>down</code> 限制下载速度(bytes per second).</li>
             </ul>
             注意: <code>上传</code> 和 <code>下载</code> 是独立的.
-            然而，假如同一个管道中的<code>rate</code>和<code>up</code>（假如都存在）较慢的将生效。<code>rate</code> 和 <code>down</code> 也是一样。
-
-            However, <code>rate</code> and <code>up</code> (if they both exist) form a pipeline; the slower of the two governing the total speed.
-            The same is true of <code>rate</code> and <code>down</code>.
-            These properties can also be get/set by using <code>proxy.slow()</code>.
+            然而，假如同时使用<code>rate</code>和<code>up</code>，他们当中较慢的将生效。<code>rate</code> 和 <code>down</code> 也是一样。
+            这些属性可以通过<code>proxy.slow()</code>获取或者设置。
           </td>
         </tr>
       </tobdy>
@@ -107,15 +104,14 @@
   <h3 id="proxy-listen"><a href="#proxy-listen">proxy.listen(<span class="args">port, [hostname], [backlog], [callback]</span>)</a></h3>
   <div class="api-detail-content">
     <p>
-      Starts proxy listening on <code>port</code>.
-      Returns itself.
+      监听<code>port</code>端口并返回自身（proxy实例）
     </p>
     <pre class="language-javascript code">
       var hoxy = require('hoxy');
       var proxy = hoxy.createServer().listen(8080);
     </pre>
     <p>
-      A callback may be provided, to run when the proxy has started listening.
+      可以添加回调函数，当代理启动时调用。
     </p>
     <pre class="language-javascript code">
       var hoxy = require('hoxy');
@@ -125,7 +121,7 @@
       });
     </pre>
     <p>
-      This method simply passes its arguments to Node&apos;s <a href="http://nodejs.org/api/http.html#http_server_listen_port_hostname_backlog_callback"><code>server.listen()</code> method</a>.
+      这个函数只是将所有参数都传递给Node的<a href="http://nodejs.org/api/http.html#http_server_listen_port_hostname_backlog_callback"><code>server.listen()</code> 方法</a>。
     </p>
   </div>
 </div>
@@ -134,14 +130,14 @@
   <h3 id="proxy-slow"><a href="#proxy-slow">proxy.slow(<span class="args">[options]</span>)</a></h3>
   <div class="api-detail-content">
     <p>
-      Get/set proxy-level slow options.
-      If <code>options</code> is provided, it's a setter.
+      获取或者设置代理网络速度的选项。
+      如果有参数, 就是设置速度
     </p>
     <pre class="language-javascript code">
       proxy.slow({ rate, latency, up, down });
     </pre>
     <p>
-      If <code>options</code> is not provided, it's a getter.
+      如果没有参数，就会返回当前速度设置。
     </p>
     <pre class="language-javascript code">
       var slowOpts = proxy.slow();
@@ -153,14 +149,14 @@
   <h3 id="proxy-intercept"><a href="#proxy-intercept">proxy.intercept(<span class="args">options, handler</span>)</a></h3>
   <div class="api-detail-content">
     <p>
-      This is the entry point for intercepting and operating on requests and responses.
-      This first example intercepts all requests.
+      这是拦截和操作请求或响应数据的入口。
+      下面这个例子将拦截所有的请求。
     </p>
     <pre class="language-javascript code">
       proxy.intercept('request', req => console.log(req.url));
     </pre>
     <p>
-      This is more verbose, but identical to the above.
+      这个例子更详细，但功能和上面的相同。
     </p>
     <pre class="language-javascript code">
       proxy.intercept({
@@ -169,9 +165,9 @@
         console.log(req.url);
       });
     </pre>
-    <h4>Interceptors</h4>
+    <h4>Interceptors(拦截)</h4>
     <p>
-      The callback passed to <code>intercept()</code> (AKA the <em>interceptor</em>) receives three arguments <code>(req, resp, cycle)</code> which are instances of classes described below.
+      传递给 <code>intercept()</code> (同名<em>interceptor</em>)的回调函数接收三个参数<code>(req, resp, cycle)</code>，他们是下面介绍的一些类的实例。
       <code>cycle</code> is also passed as context.
       Thus:
     </p>
@@ -180,8 +176,10 @@
         console.log(this === cycle) // true
       });
     </pre>
-    <h4>Sync versus async interceptors</h4>
+    <h4>Sync versus async interceptors 同步拦截器vs异步拦截器</h4>
     <p>
+      Hoxy会按顺序执行所有内容，包括拦截器。
+      当执行同步代码时没有问题，但是当执行异步代码时，你必须返回一个Promise。Hoxy会等待Promise resolve完毕后后面的代码才会继续。
       Hoxy internally runs everything sequentially in series, including interceptors.
       That happens naturally when your interceptor logic is synchronous.
       But if it's asynchronous, you must signal that by returning a promise.
@@ -198,10 +196,8 @@
       });
     </pre>
     <p>
-      Future versions of JavaScript will allow <a href="https://github.com/lukehoban/ecmascript-asyncawait">async functions</a>.
-      Some transpilers allow you to use this syntax today.
-      These can be used as interceptors, too.
-      Written this way, your logic and your error handling are much cleaner.
+      Javascript的未来版本将可以使用功能async。
+      通过一些转换器现在就可以使用它。这些特性也可以在拦截器中使用。通过新的写法，逻辑操作和错误处理也更新清晰了。
     </p>
     <pre class="language-javascript code">
       proxy.intercept('request', async function(req, resp, cycle) {
@@ -212,6 +208,7 @@
       });
     </pre>
     <p>
+      在当前版本的io.js，
       In current versions of io.js, generators can be used as a stand-in for async functions, but with the benefit of being natively-supported, spec-valid ES6 syntax.
       You must only yield <em>promises</em> from your generator.
       See <a href="https://www.npmjs.com/package/co">co</a> for more details.
