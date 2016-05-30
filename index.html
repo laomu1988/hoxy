@@ -17,26 +17,30 @@
 
 <div id="target">
 
-<h1 id="introduction" data-tldr="Documentation and examples.">Hoxy: Introduction<a href="#introduction" class="permalink" title="permalink"></a></h1>
+<h1 id="introduction" data-tldr="Documentation and examples.">Hoxy&#x4ECB;&#x7ECD;<a href="#introduction" class="permalink" title="permalink"></a></h1>
 
 <p>
-  Hoxy is a completely free, open source HTTP hacking API for Node.js.
-  It operates in the same ballpark as Charles or Fiddler.
-  A few key features:
+  Hoxy&#x662F;&#x4E00;&#x4E2A;&#x7528;Node&#x7F16;&#x5199;&#x7684;&#x5B8C;&#x5168;&#x514D;&#x8D39;&#x3001;&#x5F00;&#x6E90;&#x7684;Http&#x4EE3;&#x7406;&#x8F6F;&#x4EF6;&#xFF0C;&#x7C7B;&#x4F3C;Charles&#x548C;Fiddler&#x3002;
+  &#x5B83;&#x6709;&#x5982;&#x4E0B;&#x7279;&#x70B9;&#xFF1A;
 </p>
 
 <ul>
-  <li>Intercept requests and/or responses.</li>
-  <li>Observe and alter all aspects of requests/responses.</li>
-  <li>Simulate network slowness and latency.</li>
-  <li>Supports both direct and reverse proxying.</li>
-  <li>Built-in helpers for replacing remote files with local ones.</li>
-  <li>Request/response body types: JSON, string, jQuery, buffer, etc.</li>
-  <li>Supports both HTTP and HTTPS.</li>
+  <li>&#x4E2D;&#x65AD;&#x8BF7;&#x6C42;&#x6216;&#x8005;&#x54CD;&#x5E94;.</li>
+  <li>&#x89C2;&#x5BDF;&#x548C;&#x6539;&#x53D8;&#x8BF7;&#x6C42;&#x6216;&#x54CD;&#x5E94;&#x7684;&#x5404;&#x4E2A;&#x90E8;&#x5206;</li>
+  <li>&#x6A21;&#x62DF;&#x7F51;&#x7EDC;&#x7684;&#x7F13;&#x6162;&#x548C;&#x5EF6;&#x8FDF;</li>
+  <li>&#x652F;&#x6301;&#x76F4;&#x63A5;&#x6216;&#x8005;&#x53CD;&#x5411;&#x4EE3;&#x7406;</li>
+  <li>&#x53EF;&#x4EE5;&#x7528;&#x672C;&#x5730;&#x6587;&#x4EF6;&#x4EE3;&#x66FF;&#x8FDC;&#x7A0B;&#x8BF7;&#x6C42;</li>
+  <li>&#x8BF7;&#x6C42;&#x6216;&#x8005;&#x54CD;&#x5E94;&#x4E3B;&#x4F53;&#x7C7B;&#x578B;: JSON, string, jQuery, buffer, etc.</li>
+  <li>&#x652F;&#x6301;HTTP&#x548C;HTTPS.</li>
 </ul>
 
 <p>
   Here are a few ideas for things you could do.
+</p>
+
+<p>
+  Here are a few ideas for things you could do.
+  &#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E9B;&#x60F3;&#x6CD5;&#x4F60;&#x53EF;&#x80FD;&#x7528;&#x5230;
 </p>
 
 <ul>
@@ -47,17 +51,33 @@
   <li>Test changes in production, without pushing to production.</li>
 </ul>
 
+<ul>
+  <li>&#x628A;&#x4F60;&#x670B;&#x53CB;&#x5708;&#x7684;&#x56FE;&#x7247;&#x66FF;&#x6362;&#x6210;&#x72EC;&#x89D2;&#x517D;.</li>
+  <li>&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;headers&#x6807;&#x5FD7;&#x8FF7;&#x60D1;&#x670D;&#x52A1;&#x5668;</li>
+  <li>&#x4ECE;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x5220;&#x9664;&#x5E7F;&#x544A;.</li>
+  <li>&#x901A;&#x8FC7;&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#x968F;&#x673A;&#x91CF;&#x6D4B;&#x8BD5;&#x7F51;&#x7AD9;&#x7684;&#x52A0;&#x8F7D;&#x987A;&#x4FBF;</li>
+  <li>&#x5728;&#x63A8;&#x9001;&#x5230;&#x6B63;&#x5F0F;&#x73AF;&#x5883;&#x4E4B;&#x524D;&#x6D4B;&#x8BD5;&#x4EA7;&#x54C1;&#x7684;&#x53D8;&#x5316;</li>
+</ul>
 <p>
   These docs are for Hoxy 3.x.
   See the <a href="#examples">incantations</a> section for code samples.
 </p>
+<p>
+  &#x4E0B;&#x9762;&#x662F;Hoxy 3.x&#x7684;&#x6587;&#x6863;&#x3002;
+  &#x67E5;&#x770B;&#x793A;&#x4F8B;&#x8BF7;&#x70B9;&#x51FB;&#xFF1A; <a href="#examples">&#x5492;&#x8BED;</a> &#x3002;
+</p>
 
-<h2 id="how-it-works">How it works<a href="#how-it-works" class="permalink" title="permalink"></a></h2>
+<h2 id="how-it-works">&#x5DE5;&#x4F5C;&#x539F;&#x7406;<a href="#how-it-works" class="permalink" title="permalink"></a></h2>
 
 <p>
   Hoxy functions as a normal proxy standing between the client and server.
   You intercept traffic during either the request or response phase, or both.
   The <a href="#phase-lifecycle">phase lifecycle section</a> contains a more complete description, but here&apos;s a simplified illustration.
+</p>
+<p>
+  Hoxy&#x662F;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x7684;&#x4EE3;&#x7406;&#x5DE5;&#x5177;&#x3002;
+  &#x4F60;&#x53EF;&#x4EE5;&#x62E6;&#x622A;&#x8BF7;&#x6C42;&#x6216;&#x8005;&#x54CD;&#x5E94;&#xFF0C;
+  &#x4E0B;&#x9762;&#x662F;&#x4E00;&#x5F20;&#x7B80;&#x56FE;&#xFF0C;&#x8BE6;&#x7EC6;&#x60C5;&#x51B5;<a href="#phase-lifecycle">&#x70B9;&#x51FB;&#x67E5;&#x770B;</a>
 </p>
 
 <pre class="code">
@@ -71,21 +91,19 @@
 </pre>
 
 <ol>
-  <li>Client sends request.</li>
-  <li>Hoxy intercepts the request.</li>
-  <li>Server receives request and sends response.</li>
-  <li>Hoxy intercepts the response.</li>
-  <li>Client receives response.</li>
+  <li>&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x8BF7;&#x6C42;.</li>
+  <li>Hoxy&#x62E6;&#x622A;&#x5E76;&#x5904;&#x7406;&#x8BF7;&#x6C42;.</li>
+  <li>&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x5E76;&#x53D1;&#x9001;&#x54CD;&#x5E94;&#x6570;&#x636E;.</li>
+  <li>Hoxy&#x62E6;&#x622A;&#x54CD;&#x5E94;&#x5E76;&#x5904;&#x7406;.</li>
+  <li>&#x5BA2;&#x6237;&#x7AEF;&#x6536;&#x5230;&#x8BF7;&#x6C42;.</li>
 </ol>
-
 
 
 <h1 id="getting-started" data-tldr="Installation, etc.">Getting Started<a href="#getting-started" class="permalink" title="permalink"></a></h1>
 
 <p>
-  Hoxy works on Node 0.12.x or higher, and io.js 1.0 or higher.
-  It may work in older Nodes to varying degrees.
-  Here&apos;s a quick sample program that tampers with request headers.
+  Hoxy&#x9700;&#x8981;Node 0.12.x&#x4EE5;&#x4E0A;&#x7248;&#x672C;&#xFF0C;io.js 1.0&#x4EE5;&#x4E0A;&#x7248;&#x672C;&#x3002;
+  &#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x7BE1;&#x6539;&#x8BF7;&#x6C42;&#x7684;&#x5C0F;&#x4F8B;&#x5B50;
 </p>
 
 <pre class="language-javascript code">
@@ -98,15 +116,16 @@
 </pre>
 
 <p>
-  After running the above, configure your client to proxy through <code>yourmachine:8080</code>.
-  As long as you know JavaScript and HTTP, you can inspect and manipulate your own web traffic in arbitrary ways.
+  &#x6267;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x914D;&#x7F6E;&#x4EE3;&#x7406;&#x5730;&#x5740;&#x4E3A;<code>&#x4F60;&#x7684;ip:8080</code>&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6536;&#x5230;&#x7684;&#x8BF7;&#x6C42;header&#x4E2D;&#x5C31;&#x5305;&#x542B;&#x4E86;x-unicorns&#x3002;
+  &#x53EA;&#x8981;&#x61C2;&#x5F97;Javascript&#x548C;Http&#xFF0C;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x968F;&#x610F;&#x7684;&#x67E5;&#x770B;&#x548C;&#x4FEE;&#x6539;&#x7F51;&#x7EDC;&#x6570;&#x636E;&#x3002;
 </p>
 
 <h2 id="installation" data-tldr="Available on npm.">Download &amp; Installation<a href="#installation" class="permalink" title="permalink"></a></h2>
+<h2 id="installation" data-tldr="Available on npm.">&#x4E0B;&#x8F7D; &amp; &#x5B89;&#x88C5;<a href="#installation" class="permalink" title="permalink"></a></h2>
 
 <p>
-  Hoxy is available on both <a href="https://www.npmjs.org/package/hoxy">npm</a> and <a href="https://github.com/greim/hoxy">github</a>.
-  Tests pass on recent node and io.js.
+  &#x53EF;&#x4EE5;&#x4ECE; <a href="https://www.npmjs.org/package/hoxy">npm</a> &#x4F55; <a href="https://github.com/greim/hoxy">github</a> &#x4E0B;&#x8F7D;Hoxy.
+  &#x5DF2;&#x7ECF;&#x5728;&#x6700;&#x8FD1;&#x7684;node&#x548C;io&#x7248;&#x672C;&#x4E2D;&#x6D4B;&#x8BD5;&#x901A;&#x8FC7;.
 </p>
 
 <pre class="code">
@@ -119,9 +138,9 @@
 
 
 
-<h1 id="api-documentaiton" data-tldr="Objects, methods, and properties.">API documentaiton<a href="#api-documentaiton" class="permalink" title="permalink"></a></h1>
+<h1 id="api-documentaiton" data-tldr="Objects, methods, and properties.">API&#x6587;&#x6863;<a href="#api-documentaiton" class="permalink" title="permalink"></a></h1>
 
-<h2 id="main-module" data-tldr="Entry point for all hoxy functionality.">Main module<a href="#main-module" class="permalink" title="permalink"></a></h2>
+<h2 id="main-module" data-tldr="Entry point for all hoxy functionality.">&#x4E3B;&#x8981;&#x6A21;&#x5757;<a href="#main-module" class="permalink" title="permalink"></a></h2>
 
 <pre class="language-javascript code">
   var hoxy = require(&apos;hoxy&apos;);
@@ -134,16 +153,14 @@
 <h2 id="class-proxy">Class Proxy<a href="#class-proxy" class="permalink" title="permalink"></a></h2>
 
 <p>
-  Represents a proxy server.
-  An instance of this is returned from <code>hoxy.createServer()</code>.
+  <code>hoxy.createServer()</code>&#x5C06;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;
 </p>
 
 <div class="api-detail">
   <h3 id="new-proxy"><a href="#new-proxy">hoxy.createServer(<span class="args">options</span>)</a><a href="#new-proxy" class="permalink" title="permalink"></a></h3>
   <div class="api-detail-content">
     <p>
-      Factory for a new proxy with given options.
-      All options are optional.
+      &#x901A;&#x8FC7;&#x53C2;&#x6570;&#x751F;&#x6210;&#x4EE3;&#x7406;&#xFF0C;&#x6240;&#x6709;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x53EF;&#x9009;&#x7684;.
     </p>
     <pre class="language-javascript code">
       var hoxy = require(&apos;hoxy&apos;);
@@ -156,27 +173,25 @@
       });
     </pre>
     <table>
-      <caption>Options Detail</caption>
+      <caption>&#x53C2;&#x6570;&#x8BE6;&#x89E3;</caption>
       <thead>
         <tr>
-          <th>name</th>
-          <th>description</th>
+          <th>&#x53C2;&#x6570;</th>
+          <th>&#x8BE6;&#x89E3;</th>
         </tr>
       </thead>
       <tobdy>
         <tr>
           <td><code>upstreamProxy</code></td>
           <td>
-            Optional.
-            If present, this proxy will in turn use another proxy.
-            This allows Hoxy to play well with other proxies.
-            This value should take the form <code>host:port</code>.
+            [&#x53EF;&#x9009;]&#x3002;&#x5C06;&#x5F53;&#x524D;&#x4EE3;&#x7406;&#x5C06;&#x8F6C;&#x53D1;&#x5230;&#x5176;&#x4ED6;&#x4EE3;&#x7406;&#x5730;&#x5740;&#x3002;&#x4F7F;&#x7528;&#x683C;&#x5F0F;&#xFF1A;<code>host:port</code>
           </td>
         </tr>
         <tr>
           <td><code>reverse</code></td>
           <td>
-            Optional.
+            [&#x53EF;&#x9009;].
+            &#x672C;&#x4EE3;&#x7406;&#x5C06;&#x4F5C;&#x4E3A;&#x6307;&#x5B9A;&#x670D;&#x52A1;&#x5668;&#x7684;&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x3002;
             If present, this proxy will run as a reverse proxy for the given server.
             This allows you to point your client directly at the proxy, instead of configuring it in the client&apos;s proxy settings.
             This value should take the form <code>scheme://host:port</code>.
@@ -185,9 +200,9 @@
         <tr>
           <td><code>certAuthority&#xA0;{&#xA0;key,&#xA0;cert&#xA0;}</code></td>
           <td>
-            Optional.
-            If present, this should contain a key/cert combo representing a certificate authority that your client trusts.
-            See <a href="https://github.com/coolaj86/node-ssl-root-cas/wiki/Painless-Self-Signed-Certificates-in-node.js">these instructions</a> for how to generate these files.
+            [&#x53EF;&#x9009;].
+            &#x901A;&#x8FC7;&#x8BBE;&#x7F6E;(&#x5BC6;&#x5319;/&#x8BC1;&#x4E66;)&#x5728;&#x4F60;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x751F;&#x6210;&#x4E00;&#x4E2A;ssl&#x8BC1;&#x4E66;.&#x5728;&#x8FD9;&#x91CC;<a href="https://github.com/coolaj86/node-ssl-root-cas/wiki/Painless-Self-Signed-Certificates-in-node.js">&#x67E5;&#x770B;&#x5982;&#x4F55;&#x751F;&#x6210;&#x5BC6;&#x5319;&#x548C;&#x8BC1;&#x4E66;</a> .
+            &#x4F60;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;https&#x4EE3;&#x7406;&#x3002;&#x8BBE;&#x7F6E;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x53EA;&#x8981;&#x4F60;&#x8BBF;&#x95EE;&#x7F51;&#x7AD9;&#xFF0C;&#x901A;&#x8FC7;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5047;&#x5BC6;&#x5319;&#x548C;&#x8BC1;&#x4E66;&#xFF0C;hoxy&#x5C06;&#x80FD;&#x591F;&#x50CF;&#x76D1;&#x542C;http&#x4E00;&#x6837;&#x76D1;&#x542C;https&#x8BF7;&#x6C42;&#x3002;
             You&apos;ll then need to configure your client to use this proxy for https in addition to http.
             Once you&apos;ve got all of that set up, Hoxy will generate fake keys/cert combos for every hostname you visit, caching them in memory for subsequent visits, thus allowing the proxy to handle https requests as cleartext.
           </td>
@@ -196,9 +211,8 @@
           <td><code>tls&#xA0;{&#xA0;key,&#xA0;cert&#xA0;}</code></td>
           <td>
             Optional.
-            Should only be used in comination with <code>reverse</code>.
-            If present, causes Hoxy to run as an https server.
-            Passed as <code>opts</code> to <code>https.createServer(opts, function)</code> (see the <a href="https://iojs.org/api/https.html">https module docs</a>).
+            &#x53EA;&#x80FD;&#x7EC4;&#x5408;&#x540E;&#x7528;&#x4E8E;&#x53CD;&#x5411;&#x4EE3;&#x7406;&#xFF0C;&#x4F7F;&#x7528;&#x540E;Hoxy&#x5C06;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;https&#x670D;&#x52A1;&#x5668;&#x3002;
+            Passed as <code>opts</code> to <code>https.createServer(opts, function)</code> (&#x53C2;&#x89C1; <a href="https://iojs.org/api/https.html">https&#x6587;&#x6863;</a>).
           </td>
         </tr>
         <tr>
@@ -206,15 +220,14 @@
           <td>
             Optional.
             <ul>
-              <li><code>latency</code> imposes a delay (in milliseconds) between all requests and responses.</li>
-              <li><code>rate</code> imposes a single rate-limiting bottleneck (in bytes per second) on all throughput.</li>
-              <li><code>up</code> imposes a single rate-limiting bottleneck (in bytes per second) on all uploads.</li>
-              <li><code>down</code> imposes a single rate-limiting bottleneck (in bytes per second) on all downloads.</li>
+              <li><code>latency</code> &#x5728;&#x6240;&#x6709;&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;&#x4E4B;&#x95F4;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x5EF6;&#x8FDF;&#x3002;&#x5355;&#x4F4D;&#xFF08;ms&#xFF09;.</li>
+              <li><code>rate</code> &#x9650;&#x5236;&#x7F51;&#x901F;&#xFF0C;&#x5355;&#x4F4D;(bytes per second).</li>
+              <li><code>up</code> &#x9650;&#x5236;&#x4E0A;&#x4F20;&#x901F;&#x5EA6;(bytes per second).</li>
+              <li><code>down</code> &#x9650;&#x5236;&#x4E0B;&#x8F7D;&#x901F;&#x5EA6;(bytes per second).</li>
             </ul>
-            Note: <code>up</code> and <code>down</code> are independent.
-            However, <code>rate</code> and <code>up</code> (if they both exist) form a pipeline; the slower of the two governing the total speed.
-            The same is true of <code>rate</code> and <code>down</code>.
-            These properties can also be get/set by using <code>proxy.slow()</code>.
+            &#x6CE8;&#x610F;: <code>&#x4E0A;&#x4F20;</code> &#x548C; <code>&#x4E0B;&#x8F7D;</code> &#x662F;&#x72EC;&#x7ACB;&#x7684;.
+            &#x7136;&#x800C;&#xFF0C;&#x5047;&#x5982;&#x540C;&#x65F6;&#x4F7F;&#x7528;<code>rate</code>&#x548C;<code>up</code>&#xFF0C;&#x4ED6;&#x4EEC;&#x5F53;&#x4E2D;&#x8F83;&#x6162;&#x7684;&#x5C06;&#x751F;&#x6548;&#x3002;<code>rate</code> &#x548C; <code>down</code> &#x4E5F;&#x662F;&#x4E00;&#x6837;&#x3002;
+            &#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>proxy.slow()</code>&#x83B7;&#x53D6;&#x6216;&#x8005;&#x8BBE;&#x7F6E;&#x3002;
           </td>
         </tr>
       </tobdy>
@@ -226,15 +239,14 @@
   <h3 id="proxy-listen"><a href="#proxy-listen">proxy.listen(<span class="args">port, [hostname], [backlog], [callback]</span>)</a><a href="#proxy-listen" class="permalink" title="permalink"></a></h3>
   <div class="api-detail-content">
     <p>
-      Starts proxy listening on <code>port</code>.
-      Returns itself.
+      &#x76D1;&#x542C;<code>port</code>&#x7AEF;&#x53E3;&#x5E76;&#x8FD4;&#x56DE;&#x81EA;&#x8EAB;&#xFF08;proxy&#x5B9E;&#x4F8B;&#xFF09;
     </p>
     <pre class="language-javascript code">
       var hoxy = require(&apos;hoxy&apos;);
       var proxy = hoxy.createServer().listen(8080);
     </pre>
     <p>
-      A callback may be provided, to run when the proxy has started listening.
+      &#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x4EE3;&#x7406;&#x542F;&#x52A8;&#x65F6;&#x8C03;&#x7528;&#x3002;
     </p>
     <pre class="language-javascript code">
       var hoxy = require(&apos;hoxy&apos;);
@@ -244,7 +256,7 @@
       });
     </pre>
     <p>
-      This method simply passes its arguments to Node&apos;s <a href="http://nodejs.org/api/http.html#http_server_listen_port_hostname_backlog_callback"><code>server.listen()</code> method</a>.
+      &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53EA;&#x662F;&#x5C06;&#x6240;&#x6709;&#x53C2;&#x6570;&#x90FD;&#x4F20;&#x9012;&#x7ED9;Node&#x7684;<a href="http://nodejs.org/api/http.html#http_server_listen_port_hostname_backlog_callback"><code>server.listen()</code> &#x65B9;&#x6CD5;</a>&#x3002;
     </p>
   </div>
 </div>
@@ -253,14 +265,14 @@
   <h3 id="proxy-slow"><a href="#proxy-slow">proxy.slow(<span class="args">[options]</span>)</a><a href="#proxy-slow" class="permalink" title="permalink"></a></h3>
   <div class="api-detail-content">
     <p>
-      Get/set proxy-level slow options.
-      If <code>options</code> is provided, it&apos;s a setter.
+      &#x83B7;&#x53D6;&#x6216;&#x8005;&#x8BBE;&#x7F6E;&#x4EE3;&#x7406;&#x7F51;&#x7EDC;&#x901F;&#x5EA6;&#x7684;&#x9009;&#x9879;&#x3002;
+      &#x5982;&#x679C;&#x6709;&#x53C2;&#x6570;, &#x5C31;&#x662F;&#x8BBE;&#x7F6E;&#x901F;&#x5EA6;
     </p>
     <pre class="language-javascript code">
       proxy.slow({ rate, latency, up, down });
     </pre>
     <p>
-      If <code>options</code> is not provided, it&apos;s a getter.
+      &#x5982;&#x679C;&#x6CA1;&#x6709;&#x53C2;&#x6570;&#xFF0C;&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x901F;&#x5EA6;&#x8BBE;&#x7F6E;&#x3002;
     </p>
     <pre class="language-javascript code">
       var slowOpts = proxy.slow();
@@ -272,14 +284,14 @@
   <h3 id="proxy-intercept"><a href="#proxy-intercept">proxy.intercept(<span class="args">options, handler</span>)</a><a href="#proxy-intercept" class="permalink" title="permalink"></a></h3>
   <div class="api-detail-content">
     <p>
-      This is the entry point for intercepting and operating on requests and responses.
-      This first example intercepts all requests.
+      &#x8FD9;&#x662F;&#x62E6;&#x622A;&#x548C;&#x64CD;&#x4F5C;&#x8BF7;&#x6C42;&#x6216;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x7684;&#x5165;&#x53E3;&#x3002;
+      &#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x5C06;&#x62E6;&#x622A;&#x6240;&#x6709;&#x7684;&#x8BF7;&#x6C42;&#x3002;
     </p>
     <pre class="language-javascript code">
       proxy.intercept(&apos;request&apos;, req =&gt; console.log(req.url));
     </pre>
     <p>
-      This is more verbose, but identical to the above.
+      &#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x66F4;&#x8BE6;&#x7EC6;&#xFF0C;&#x4F46;&#x529F;&#x80FD;&#x548C;&#x4E0A;&#x9762;&#x7684;&#x76F8;&#x540C;&#x3002;
     </p>
     <pre class="language-javascript code">
       proxy.intercept({
@@ -288,9 +300,9 @@
         console.log(req.url);
       });
     </pre>
-    <h4>Interceptors</h4>
+    <h4>Interceptors(&#x62E6;&#x622A;)</h4>
     <p>
-      The callback passed to <code>intercept()</code> (AKA the <em>interceptor</em>) receives three arguments <code>(req, resp, cycle)</code> which are instances of classes described below.
+      &#x4F20;&#x9012;&#x7ED9; <code>intercept()</code> (&#x540C;&#x540D;<em>interceptor</em>)&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x63A5;&#x6536;&#x4E09;&#x4E2A;&#x53C2;&#x6570;<code>(req, resp, cycle)</code>&#xFF0C;&#x4ED6;&#x4EEC;&#x662F;&#x4E0B;&#x9762;&#x4ECB;&#x7ECD;&#x7684;&#x4E00;&#x4E9B;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x3002;
       <code>cycle</code> is also passed as context.
       Thus:
     </p>
@@ -299,8 +311,10 @@
         console.log(this === cycle) // true
       });
     </pre>
-    <h4>Sync versus async interceptors</h4>
+    <h4>Sync versus async interceptors &#x540C;&#x6B65;&#x62E6;&#x622A;&#x5668;vs&#x5F02;&#x6B65;&#x62E6;&#x622A;&#x5668;</h4>
     <p>
+      Hoxy&#x4F1A;&#x6309;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x6240;&#x6709;&#x5185;&#x5BB9;&#xFF0C;&#x5305;&#x62EC;&#x62E6;&#x622A;&#x5668;&#x3002;
+      &#x5F53;&#x6267;&#x884C;&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x65F6;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x6267;&#x884C;&#x5F02;&#x6B65;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x4F60;&#x5FC5;&#x987B;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;Promise&#x3002;Hoxy&#x4F1A;&#x7B49;&#x5F85;Promise resolve&#x5B8C;&#x6BD5;&#x540E;&#x540E;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x624D;&#x4F1A;&#x7EE7;&#x7EED;&#x3002;
       Hoxy internally runs everything sequentially in series, including interceptors.
       That happens naturally when your interceptor logic is synchronous.
       But if it&apos;s asynchronous, you must signal that by returning a promise.
@@ -317,10 +331,8 @@
       });
     </pre>
     <p>
-      Future versions of JavaScript will allow <a href="https://github.com/lukehoban/ecmascript-asyncawait">async functions</a>.
-      Some transpilers allow you to use this syntax today.
-      These can be used as interceptors, too.
-      Written this way, your logic and your error handling are much cleaner.
+      Javascript&#x7684;&#x672A;&#x6765;&#x7248;&#x672C;&#x5C06;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x529F;&#x80FD;async&#x3002;
+      &#x901A;&#x8FC7;&#x4E00;&#x4E9B;&#x8F6C;&#x6362;&#x5668;&#x73B0;&#x5728;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5B83;&#x3002;&#x8FD9;&#x4E9B;&#x7279;&#x6027;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x62E6;&#x622A;&#x5668;&#x4E2D;&#x4F7F;&#x7528;&#x3002;&#x901A;&#x8FC7;&#x65B0;&#x7684;&#x5199;&#x6CD5;&#xFF0C;&#x903B;&#x8F91;&#x64CD;&#x4F5C;&#x548C;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x4E5F;&#x66F4;&#x65B0;&#x6E05;&#x6670;&#x4E86;&#x3002;
     </p>
     <pre class="language-javascript code">
       proxy.intercept(&apos;request&apos;, async function(req, resp, cycle) {
@@ -331,6 +343,7 @@
       });
     </pre>
     <p>
+      &#x5728;&#x5F53;&#x524D;&#x7248;&#x672C;&#x7684;io.js&#xFF0C;
       In current versions of io.js, generators can be used as a stand-in for async functions, but with the benefit of being natively-supported, spec-valid ES6 syntax.
       You must only yield <em>promises</em> from your generator.
       See <a href="https://www.npmjs.com/package/co">co</a> for more details.
@@ -1260,7 +1273,12 @@
 
 
 
-<h1 id="examples" data-tldr="Snippets of example code.">Incantations<a href="#examples" class="permalink" title="permalink"></a></h1>
+<h1 id="examples" data-tldr="Snippets of example code.">&#x5492;&#x8BED;Incantations<a href="#examples" class="permalink" title="permalink"></a></h1>
+<p>
+  Hoxy&#x4E0D;&#x662F;&#x5929;&#x4E0A;&#x4F17;&#x795E;&#x7684;&#x4E13;&#x7528;&#x9B54;&#x672F;&#x3002;
+  &#x5B83;&#x6709;&#x76F8;&#x5F53;&#x7B80;&#x5355;&#x7684;&#x67B6;&#x6784;&#x5E76;&#x4EE5;&#x53EF;&#x4EE5;&#x9884;&#x6D4B;&#x7684;&#x65B9;&#x5F0F;&#x6267;&#x884C;&#x3002;
+  &#x4F17;&#x795E;&#x5DF2;&#x7ECF;&#x9F13;&#x52B1;&#x5148;&#x77E5;&#x4EEC;&#x5199;&#x4E0B;&#x4E86;&#x4E00;&#x4E0B;&#x5492;&#x8BED;&#xFF0C;&#x8F85;&#x52A9;&#x8BAD;&#x7EC3;&#x540E;&#x6765;&#x7684;&#x8FFD;&#x968F;&#x8005;&#x3002;
+</p>
 
 <p>
   Hoxy is not Magic Cargo From The Sky Gods&#x2122;.
@@ -1271,6 +1289,7 @@
 <h3 id="unicorns">Unicorns!<a href="#unicorns" class="permalink" title="permalink"></a></h3>
 
 <p>
+  &#x8FD9;&#x4E2A;&#x5492;&#x8BED;&#x8BA9;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x8F6C;&#x6362;&#x6210;dom&#x7ED3;&#x6784;&#xFF0C;&#x7136;&#x540E;&#x4FEE;&#x6539;&#x6807;&#x9898;&#xFF0C;&#x6240;&#x6709;&#x901A;&#x8FC7;&#x6B64;&#x4EE3;&#x7406;&#x8BBF;&#x95EE;&#x7684;html&#x6807;&#x9898;&#x90FD;&#x5C06;&#x662F;&#x201D;Unicorns&#xFF01;&quot;.
   This incantation makes all titles say &quot;Unicorns!&quot; by manipulating the response as DOM.
 </p>
 
@@ -1284,9 +1303,11 @@
   });
 </pre>
 
-<h3 id="slow-connection">Slow Connection<a href="#slow-connection" class="permalink" title="permalink"></a></h3>
+<h3 id="slow-connection">&#x7F13;&#x6162;&#x7684;&#x8FDE;&#x63A5;Slow Connection<a href="#slow-connection" class="permalink" title="permalink"></a></h3>
 
 <p>
+  &#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x6A21;&#x62DF;&#x4E00;&#x4E2A;&#x7F13;&#x6162;&#x7684;&#x8FDE;&#x63A5;&#x3002;
+  &#x56E0;&#x4E3A;&#x4E24;&#x4E2A;&#x8BF7;&#x6C42;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;
   This spell simulates a slow connection.
   This is done at the proxy level since two simultaneous requests would share the same connection.
   Thus for example a limit of 100000 bps for two requests would result in a speed of 50000 bps for each.
@@ -1299,7 +1320,7 @@
 </pre>
 
 <h3 id="slow-website">Slow Website<a href="#slow-website" class="permalink" title="permalink"></a></h3>
-
+<p></p>
 <p>
   This spell simulates a slow website.
   It&apos;s as if just one website were slow, even if the rest of them run at normal speed.
@@ -1696,7 +1717,7 @@ There are two ways to do this: direct and reverse proxying.
 <h3 id="direct-https-proxying">Direct HTTPS proxying<a href="#direct-https-proxying" class="permalink" title="permalink"></a></h3>
 
 <p>
-To set up a direct HTTPS proxy, you&apos;d launch a proxy on port 8080 and set your browser to do HTTPS proxying through <code>localhost:8080</code>, then visit the site directly into your browser.
+To set up a direct HTTPS proxy, you&apos;d launch a proxy on port 8080 and set your browser to do HTTPS proxying through <code>localhost:8080</code>, then visit the site directly from your browser.
 What happens here differs radically from HTTP proxying.
 During HTTP proxying, the client sends this:
 </p>
@@ -1715,7 +1736,7 @@ But during HTTPS proxying, the client sends this:
 </pre>
 
 <p>
-Which in English means <em>connect me to example.com, I want to have a private conversation.</em>
+Which in English means <em>connect me to example.com, I want to have a private conversation with them.</em>
 Once the proxy establishes the pipe, the client TLS-handshakes the server on that connection.
 Then, it sends normal HTTP traffic over it like this:
 </p>
@@ -1820,7 +1841,7 @@ To see some openssl commands and HTTPS proxy specimens, see the <a href="#exampl
 <ul id="nav"></ul>
 </div>
 
-<a href="https://github.com/greim/hoxy"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/laomu1988/hoxy"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
 <script src="./page-resources/docs.js"></script>
 

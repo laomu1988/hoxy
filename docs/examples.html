@@ -3,7 +3,12 @@
 <head></head>
 <body>
 
-<h1 id="examples" data-tldr="Snippets of example code.">Incantations</h1>
+<h1 id="examples" data-tldr="Snippets of example code.">咒语Incantations</h1>
+<p>
+  Hoxy不是天上众神的专用魔术。
+  它有相当简单的架构并以可以预测的方式执行。
+  众神已经鼓励先知们写下了一下咒语，辅助训练后来的追随者。
+</p>
 
 <p>
   Hoxy is not Magic Cargo From The Sky Gods&trade;.
@@ -14,6 +19,7 @@
 <h3 id="unicorns">Unicorns!</h3>
 
 <p>
+  这个咒语让返回的数据转换成dom结构，然后修改标题，所有通过此代理访问的html标题都将是”Unicorns！".
   This incantation makes all titles say "Unicorns!" by manipulating the response as DOM.
 </p>
 
@@ -27,9 +33,11 @@
   });
 </pre>
 
-<h3 id="slow-connection">Slow Connection</h3>
+<h3 id="slow-connection">缓慢的连接Slow Connection</h3>
 
 <p>
+  这段代码模拟一个缓慢的连接。
+  因为两个请求使用同一个连接
   This spell simulates a slow connection.
   This is done at the proxy level since two simultaneous requests would share the same connection.
   Thus for example a limit of 100000 bps for two requests would result in a speed of 50000 bps for each.
@@ -42,7 +50,7 @@
 </pre>
 
 <h3 id="slow-website">Slow Website</h3>
-
+<p></p>
 <p>
   This spell simulates a slow website.
   It's as if just one website were slow, even if the rest of them run at normal speed.

@@ -3,6 +3,12 @@
 An HTTP hacking tool for JavaScript programmers.
 Javascript的http监听和代理工具，支持https。
 
+## Todo
+* 翻译成中文
+* 文档编译
+* 错误处理
+
+
 ## Full Documentation
 
 http://greim.github.io/hoxy/
